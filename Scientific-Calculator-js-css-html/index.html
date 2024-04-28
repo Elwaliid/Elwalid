@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+ .cal{
+  background-color: darkcyan;
+}
+.back{
+   background-color: darkkhaki}
+  button.back:hover{
+    background: #c02222;}
+body {
+    margin: 0;
+    background: radial-gradient(#1e8fa5,#08506b, black);
+    padding: 50px 0px;
+}
+button.clear {
+    background-color:darkkhaki;
+    color: #000000;
+}
+  button.clear:hover{
+    background: #c02222;}
+table {
+    background: rgb(0, 0, 0);
+    padding: 7px 5px;
+    border: 6px solid #00000000;
+    text-align: center;
+    padding-bottom: 0px;
+    box-shadow: 0px 0px 27px #0d5569;
+    border-radius: 10px;
+    margin-top: 90px;
+}
+button.equal {
+    width: 88%;
+    background-color: darkkhaki;
+}
+button.equal:hover{
+    background: #1fb859;
+}
+input[type="text"] {
+    width: 450px;
+    height: 81px;
+    border: 1px solid #000;
+    padding: 10px 20px;
+    font-size: 29px;
+    background: #504f4f;
+    font-weight: bold;
+    margin-bottom: 25px;
+    font-family: cursive;
+    margin-top: 10px;
+    color: #ffffff;
+    border-bottom: 2px solid rgb(32, 87, 87);
+}
+button {
+    padding: 10px 20px;
+    width: 100px;
+    height: 60px;
+    margin-bottom: 20px;
+    font-size: 26px;
+    font-weight: bold;
+    font-family: cursive;
+    
+    background-color: darkkhaki;
+    border: none;
+    color: #000000;
+    border-radius: 500px;
+    cursor: pointer;
+}
+button:hover{
+    background: #978b88;
+}
+</style>
+</head>
+
+
+<body>
+<form name="calcul">
+<table align="center">
+
+    <tr>
+        <td colspan="4"> <input type="text" name="result" placeholder="0" style="text-align:right"> </td>
+    </tr>
+
+    <tr >
+        <td><button type="button" value="sin" onclick="sin()" class="cal"> sin </button> </td>
+        <td><button type="button" value="cos" onclick="cos()"  class="cal"> cos</button> </td>
+        <td><button type="button" value="tan" onclick="tan()"  class="cal"> tan </button> </td>
+
+        <td><button type="button" value="ln" onclick="ln()"  class="cal"> ln </button> </td>
+    </tr>
+
+    <tr >
+        <td><button type="button" value="e" onclick="e()" class="cal"> e </button> </td>
+        <td><button type="button" value="x^y" onclick="xy()" class="cal"> x<sup>y </button> </td>
+        <td><button type="button" value="sqrt2" onclick="sqrt2()" class="cal"> &radic; </button> </td>
+        <td><button type="button" value="sqrt3" onclick="sqrt3()" class="cal"> &#8731; </button> </td>
+    </tr>
+
+    <tr>
+        <td><button type="button" value="1" onclick="number(value)"> 1 </button> </td>
+        <td><button type="button" value="2" onclick="number(value)"> 2 </button> </td>
+        <td><button type="button" value="3" onclick="number(value)"> 3 </button> </td>
+        <td><button type="button" value="BACKSPC" onclick="BACKSPC()" class="back"> < </button> </td>
+    </tr>
+
+    <tr>
+        <td><button type="button" value="4" onclick="number(value)"> 4</button> </td>
+        <td><button type="button" value="5" onclick="number(value)"> 5 </button> </td>
+        <td><button type="button" value="6" onclick="number(value)"> 6 </button> </td>
+        <td><button type="button" value="-" onclick="number(value)"> - </button> </td>
+    </tr>
+
+    <tr>
+        <td><button type="button" value="7" onclick="number(value)"> 7 </button> </td>
+        <td><button type="button" value="8" onclick="number(value)"> 8 </button> </td>
+        <td><button type="button" value="9" onclick="number(value)"> 9 </button> </td>
+        <td  ><button type="button" value="/" onclick="number(value)"> / </button> </td>
+    </tr>
+
+    <tr>
+        <td><button type="button" value="." onclick="number(value)"> . </button> </td>
+        <td><button type="button" value="0" onclick="number(value)"> 0 </button> </td>
+        <td  ><button type="button" value="*" onclick="number(value)"> * </button> </td>
+        <td  ><button type="button" value="%" onclick="number(value)"> % </button> </td>
+    </tr>
+
+    <tr>
+        <td colspan="2"> <button type="button" value="=" onclick="equal()" class="equal">=</button> </td>
+        <td  ><button type="button" value="+" onclick="number(value)"> + </button> </td>
+        <td colspan="2">
+         <button type="button" value="C" class="clear" onclick="remv()"> C </button>
+     </td>
+    </tr>
+
+    <tr>
+        <td><button type="button" value="OR" onclick="logical('OR')" class="cal"> OR </button> </td>
+        <td><button type="button" value="AND" onclick="logical('AND')" class="cal"> AND </button> </td>
+        <td><button type="button" value="XOR" onclick="logical('XOR')" class="cal"> XOR </button> </td>
+        <td><button type="button" value="NOR" onclick="logical('NOR')" class="cal"> NOR </button> </td>
+    </tr>
+
+</table>
+</form>
+
+
+<script>
+    function sin(){
+    document.calcul.result.value=Math.sin(document.calcul.result.value);
+    }
+
+    function cos(){
+    document.calcul.result.value=Math.cos(document.calcul.result.value);
+    }
+
+    function tan(){
+    document.calcul.result.value=Math.tan(document.calcul.result.value);
+    }
+
+    function BACKSPC(){
+    var a = document.calcul.result.value;
+    document.calcul.result.value = a.substr(0, a.length-1);
+    }
+
+    
+
+    function xy() {
+    var base = parseFloat(document.calcul.result.value);
+    var exponent = parseFloat(prompt("Enter the exponent (y):"));
+    var result = Math.pow(base, exponent);
+    document.calcul.result.value = result;
+    }
+
+    function sqrt2(){
+    document.calcul.result.value = Math.pow(document.calcul.result.value, 1/2);
+    }
+
+    function sqrt3(){
+    document.calcul.result.value = Math.pow(document.calcul.result.value, 1/3);
+    }
+
+   function number(value) {
+    var currentValue = document.calcul.result.value;
+    // Check if the last character is already a decimal point
+    if (value === '.' && currentValue.slice(-1) === '.') {
+        return; // Ignore input of another decimal point
+    }
+    document.calcul.result.value += value;
+}
+
+
+    function remv(){
+    document.calcul.result.value=" ";
+    }
+
+    function equal(){
+    document.calcul.result.value=eval(document.calcul.result.value);
+    }
+
+    function ln() {
+    document.calcul.result.value = Math.log(document.calcul.result.value);
+    }
+
+    function e() {
+    document.calcul.result.value = Math.E;
+    }
+
+    function logical(operation) {
+    var currentValue = parseFloat(document.calcul.result.value);
+    var newValue = parseFloat(prompt("Enter the value for the logic operation:"));
+    var result;
+    switch(operation) {
+        case 'OR':
+            result = currentValue || newValue;
+            break;
+        case 'AND':
+            result = currentValue && newValue;
+            break;
+        case 'XOR':
+            result = currentValue !== newValue;
+            break;
+        case 'NOR':
+            result = !(currentValue || newValue);
+            break;
+        default:
+            result = 0;
+    }
+    document.calcul.result.value = result;
+}
+</script>
+</body>
+</html>
